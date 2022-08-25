@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/woordleClone/static/css/main.cdd3fba7.css",
+    "main.css": "/woordleClone/static/css/main.ee02fc26.css",
     "main.js": "/woordleClone/static/js/main.0b7c2420.js",
     "index.html": "/woordleClone/index.html",
-    "main.cdd3fba7.css.map": "/woordleClone/static/css/main.cdd3fba7.css.map",
+    "main.ee02fc26.css.map": "/woordleClone/static/css/main.ee02fc26.css.map",
     "main.0b7c2420.js.map": "/woordleClone/static/js/main.0b7c2420.js.map"
   },
   "entrypoints": [
-    "static/css/main.cdd3fba7.css",
+    "static/css/main.ee02fc26.css",
     "static/js/main.0b7c2420.js"
   ]
 }
