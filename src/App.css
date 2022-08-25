@@ -186,4 +186,10 @@ div.filled{
   html{
     font-size: 12px;
   }
+  .board{
+    margin-top: 4rem;
+  }
+  .keyboard{
+    margin-top: 4rem;
+  }
 }
