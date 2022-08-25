@@ -1,38 +1,189 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html{
+  --correct-color: #528d4d;
+  --wrong-place-color: #b59f3a;
+  --wrong-color: #3a3a3c;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body{
+  padding: 0;
+  margin: 0;
   min-height: 100vh;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, rgb(161,229,255), rgb(33,132,241));
+  font-family: 'Roboto Slab', serif;
+  /* overflow-y: hidden; */
+  position: relative;
+}
+header{
+  min-height: 4rem;
+  background-color: rgba(250,250,250,0.5);
+  backdrop-filter: blur(0.5rem);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  font-family: 'Roboto Slab', serif;
+  font-size: 0.8rem;
+}
+.message{
+  box-sizing: border-box;
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2.5rem 3rem;
+  background-color: rgb(32, 35, 46,0.7);
   color: white;
+  backdrop-filter: blur(0.5rem);
+  border-radius: 1.5rem;
+  display: none; /*flex*/
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
+  transition: all 1s ease-in;
+  box-shadow: 0 0 0 100vmax rgb(32, 35, 46,0.2);
 }
-
-.App-link {
-  color: #61dafb;
+.message span{
+  color: var(--correct-color);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.close{
+  position: absolute;
+  top:5%;
+  right: 5%;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  transition: all 250ms ease;
+}
+.board{
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(5,3.75rem);
+  grid-template-rows: repeat(6,3.75rem);
+  justify-content: center;
+  gap: 0.3rem;
+}
+.board>div{
+  user-select: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(20,20,20,1);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.125rem solid #333;
+}
+div.wrong{
+  --backgroundColor: var(--wrong-color);
+  animation: flip 500ms ease forwards;
+} 
+div.wrongPlace{
+  --backgroundColor: var(--wrong-place-color);
+  animation: flip 500ms ease forwards;
+}
+div.correct{
+  --backgroundColor: var(--correct-color);
+  animation: flip 500ms ease forwards;
+}
+div:nth-child(5n-3){
+  animation-delay: 150ms;
+}
+div:nth-child(5n-2){
+  animation-delay: 300ms;
+}
+div:nth-child(5n-1){
+  animation-delay: 450ms;
+}
+div:nth-child(5n){
+  animation-delay: 600ms;
+}
+div.filled{
+  animation: grow 200ms ease-in-out forwards;
+  background-color: rgba(10,10,10,0.9);
+}
+.keyboard{
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(20,1.25rem);
+  grid-template-rows: repeat(3,3.125rem);
+  justify-content: center;
+  gap: 0.3rem;
+}
+.letter:nth-child(11){
+  grid-column: 2/span 2;
+}
+.letter{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: none;
+  grid-column: span 2;
+  border-radius: 0.5rem;
+  background-color: rgba(210,210,210,1);
+  color: rgba(10,10,10,0.8);
+  font-weight: bold;
+  transition: all 150ms ease;
+}
+.enter, .backspace{
+  grid-column: span 3;
+}
+.wrongLetter{
+  background-color: var(--wrong-color);
+} 
+.wrongPlaceLetter{
+  background-color: var(--wrong-place-color);
+}
+.correctLetter{
+  background-color: var(--correct-color);
+}
+@keyframes flip{
+  0%{
+    transform: rotateY(0deg);
+    background-color: rgba(10,10,10,0.8);
   }
-  to {
-    transform: rotate(360deg);
+  45%{
+    transform: rotateY(90deg);
+    background-color: rgba(10,10,10,0.8);
+  }
+  55%{
+    transform: rotateY(90deg);
+    background-color: var(--backgroundColor);
+  }
+  100%{
+    transform: rotateY(0deg);
+    background-color: var(--backgroundColor);
+    border: none;
+  }
+}
+@keyframes grow{
+    0%{
+      transform: scale(1);
+    }
+    50%{
+      transform: scale(1.2);
+    }
+    100%{
+      transform: scale(1);
+    }
+}
+@media only screen and (min-width: 560px){
+  .letter:hover{
+    background-color: rgba(230, 230, 230, 1);
+  }
+  .close:hover{
+    background-color: white;
+    color: black;
+  }
+}
+@media only screen and (max-width: 560px){
+  html{
+    font-size: 13px;
   }
 }
